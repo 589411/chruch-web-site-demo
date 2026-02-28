@@ -11,6 +11,34 @@
 - **LLM 友善**：所有配置皆為 JSON，方便 AI 維護
 - **即時預覽**：每階段完成即可查看網站原型
 
+## 🌐 示範網站預覽
+
+### 線上 Demo
+🔗 **[點擊查看示範網站](你的Netlify網址)**
+
+### 桌面版畫面
+![首頁桌面版](screenshots/desktop-home.png)
+*現代化設計，清晰的視覺層級*
+
+![關於我們](screenshots/desktop-about.png)
+*團隊介紹與教會使命*
+
+### 手機版畫面
+<p float="left">
+  <img src="screenshots/mobile-home.png" width="250" alt="手機版首頁" />
+  <img src="screenshots/mobile-schedule.png" width="250" alt="手機版聚會" />
+  <img src="screenshots/mobile-contact.png" width="250" alt="手機版聯絡" />
+</p>
+
+*完美適配各種裝置尺寸*
+
+### 功能展示
+![活動報名頁面](screenshots/desktop-events.png)
+*精美的活動展示與報名功能*
+
+![講道信息頁面](screenshots/desktop-sermons.png)
+*整合 YouTube 影片的講道列表*
+
 ## 📁 專案結構
 
 ```
