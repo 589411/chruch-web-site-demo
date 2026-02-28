@@ -1,0 +1,204 @@
+{
+  "selectedFeatures": [
+    "schedule",
+    "sermons",
+    "events",
+    "contact",
+    "donation",
+    "social"
+  ],
+  "schedule": {
+    "enabled": true,
+    "displayStyle": "card",
+    "showLocation": true,
+    "showDescription": true
+  },
+  "sermons": {
+    "enabled": true,
+    "primaryFormat": "video",
+    "platforms": ["youtube"],
+    "enableDownload": true,
+    "showNotes": true,
+    "categories": [
+      "主日信息",
+      "專題講座",
+      "查經系列",
+      "見證分享"
+    ],
+    "displayStyle": "grid",
+    "itemsPerPage": 12,
+    "youtubeChannelId": "UCxxxxxxxxxxxxx",
+    "autoSync": true
+  },
+  "events": {
+    "enabled": true,
+    "provider": "google",
+    "calendarId": "faithhopelove@group.calendar.google.com",
+    "enableRegistration": true,
+    "registrationProvider": "Google Forms",
+    "showUpcoming": true,
+    "upcomingLimit": 5,
+    "categories": [
+      "主日崇拜",
+      "特會",
+      "營會",
+      "外展活動",
+      "小組聚會"
+    ]
+  },
+  "contact": {
+    "enabled": true,
+    "provider": "emailjs",
+    "serviceId": "service_xxxxxxx",
+    "templateId": "template_xxxxxxx",
+    "publicKey": "xxxxxxxxxxxxxxx",
+    "fields": [
+      {
+        "name": "name",
+        "label": "姓名",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "phone",
+        "label": "電話",
+        "type": "tel",
+        "required": false
+      },
+      {
+        "name": "subject",
+        "label": "主旨",
+        "type": "select",
+        "required": true,
+        "options": [
+          "一般諮詢",
+          "參加聚會",
+          "代禱需求",
+          "志工服務",
+          "其他"
+        ]
+      },
+      {
+        "name": "message",
+        "label": "訊息內容",
+        "type": "textarea",
+        "required": true
+      }
+    ],
+    "notifyEmail": "info@faithhopelove.org",
+    "autoReply": true,
+    "autoReplyMessage": "感謝您的來信，我們會盡快回覆您。願神賜福您！"
+  },
+  "donation": {
+    "enabled": true,
+    "methods": [
+      {
+        "type": "qrcode",
+        "name": "銀行轉帳",
+        "image": "/images/donation-qr-bank.png",
+        "bankInfo": {
+          "bank": "台灣銀行 中正分行",
+          "account": "123-456-789012",
+          "name": "台北信望愛基督教會"
+        },
+        "order": 1
+      },
+      {
+        "type": "qrcode",
+        "name": "LINE Pay",
+        "image": "/images/donation-qr-line.png",
+        "order": 2
+      },
+      {
+        "type": "online",
+        "provider": "newebpay",
+        "merchantId": "MS123456789",
+        "currency": "TWD",
+        "enableRecurring": true,
+        "recurringOptions": [
+          {
+            "label": "每月定期",
+            "value": "monthly"
+          },
+          {
+            "label": "每季定期",
+            "value": "quarterly"
+          },
+          {
+            "label": "每年定期",
+            "value": "yearly"
+          }
+        ],
+        "order": 3
+      }
+    ],
+    "categories": [
+      {
+        "id": "general",
+        "name": "一般奉獻",
+        "description": "支持教會日常運作"
+      },
+      {
+        "id": "building",
+        "name": "建堂基金",
+        "description": "為教會建堂計畫奉獻"
+      },
+      {
+        "id": "mission",
+        "name": "宣教事工",
+        "description": "支持國內外宣教工作"
+      },
+      {
+        "id": "charity",
+        "name": "慈惠基金",
+        "description": "幫助有需要的弟兄姊妹"
+      }
+    ],
+    "taxReceipt": true,
+    "receiptEmail": "finance@faithhopelove.org",
+    "showProgress": false,
+    "testimonials": [
+      {
+        "text": "奉獻是我與神同工的方式，看見教會祝福社區，我感到無比喜樂。",
+        "author": "李姊妹"
+      },
+      {
+        "text": "定期定額的奉獻讓我學習作神財物的好管家。",
+        "author": "王弟兄"
+      }
+    ]
+  },
+  "social": {
+    "enabled": true,
+    "enableFeed": true,
+    "platforms": [
+      {
+        "name": "facebook",
+        "pageId": "faithhopelove",
+        "showFeed": true,
+        "feedLimit": 3
+      },
+      {
+        "name": "instagram",
+        "username": "faithhopelove",
+        "showFeed": true,
+        "feedLimit": 6
+      },
+      {
+        "name": "youtube",
+        "channelId": "UCxxxxxxxxxxxxx",
+        "showLatest": true,
+        "latestLimit": 3
+      }
+    ],
+    "displayStyle": "grid",
+    "autoUpdate": true,
+    "updateInterval": 3600
+  }
+}

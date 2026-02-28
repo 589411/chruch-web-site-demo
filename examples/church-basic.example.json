@@ -1,0 +1,117 @@
+{
+  "churchInfo": {
+    "fullName": "台北信望愛基督教會",
+    "shortName": "信望愛教會",
+    "englishName": "Faith Hope Love Church Taipei"
+  },
+  "address": {
+    "street": "台北市中正區羅斯福路一段1號",
+    "city": "台北市",
+    "district": "中正區",
+    "zipCode": "100",
+    "googleMapsUrl": "https://goo.gl/maps/xxxxx",
+    "coordinates": {
+      "lat": 25.0330,
+      "lng": 121.5654
+    }
+  },
+  "schedule": [
+    {
+      "name": "主日崇拜",
+      "day": "週日",
+      "time": "10:00-12:00",
+      "location": "主堂",
+      "description": "英語/華語同步翻譯",
+      "recurring": "weekly"
+    },
+    {
+      "name": "週三禱告會",
+      "day": "週三",
+      "time": "19:30-21:00",
+      "location": "副堂",
+      "description": "為教會與城市守望禱告",
+      "recurring": "weekly"
+    },
+    {
+      "name": "週五青年聚會",
+      "day": "週五",
+      "time": "19:00-21:30",
+      "location": "青年中心",
+      "description": "18-35歲青年敬拜與團契",
+      "recurring": "weekly"
+    }
+  ],
+  "mission": {
+    "mission": "活出基督的愛，建造榮神益人的教會",
+    "vision": "成為社區的祝福，傳揚福音直到地極",
+    "values": [
+      "敬拜：以心靈誠實敬拜神",
+      "團契：建立彼此相愛的群體",
+      "服事：發揮恩賜服事人群",
+      "傳福音：分享耶穌基督的好消息",
+      "門徒訓練：培育成熟的基督徒"
+    ]
+  },
+  "team": [
+    {
+      "name": "王恩典",
+      "title": "主任牧師",
+      "photo": "/images/team/pastor-wang.jpg",
+      "bio": "神學院道學碩士，牧養教會15年，熱愛青年事工與社區服務，致力於建立健康的教會文化。",
+      "email": "pastor.wang@faithhopelove.org",
+      "order": 1
+    },
+    {
+      "name": "李平安",
+      "title": "傳道",
+      "photo": "/images/team/pastor-lee.jpg",
+      "bio": "負責兒童與家庭事工，曾任小學教師，擁有豐富的兒童教育經驗，喜愛與家庭同行。",
+      "email": "pastor.lee@faithhopelove.org",
+      "order": 2
+    },
+    {
+      "name": "張喜樂",
+      "title": "青年事工同工",
+      "photo": "/images/team/minister-zhang.jpg",
+      "bio": "青年事工負責人，熱愛敬拜讚美，擅長帶領小組與營會，陪伴青年探索信仰與人生方向。",
+      "email": "joy.zhang@faithhopelove.org",
+      "order": 3
+    },
+    {
+      "name": "陳愛心",
+      "title": "行政同工",
+      "photo": "/images/team/admin-chen.jpg",
+      "bio": "負責教會行政與財務管理，十年以上企業管理經驗，以專業服事神的家。",
+      "email": "admin@faithhopelove.org",
+      "order": 4
+    }
+  ],
+  "contact": {
+    "phone": "02-2345-6789",
+    "email": "info@faithhopelove.org",
+    "line": "@faithhopelove",
+    "facebook": "https://facebook.com/faithhopelove",
+    "instagram": "https://instagram.com/faithhopelove",
+    "youtube": "https://youtube.com/@faithhopelove",
+    "officeHours": "週二至週五 10:00-17:00"
+  },
+  "branding": {
+    "primaryColor": "#3B82F6",
+    "secondaryColor": "#10B981",
+    "accentColor": "#F59E0B",
+    "logoUrl": "/images/logo.svg",
+    "fontFamily": "Noto Sans TC",
+    "style": "modern"
+  },
+  "targetAudience": {
+    "primary": ["families", "youth"],
+    "ageGroups": ["25-40", "18-25"],
+    "languages": ["zh-TW", "en"],
+    "needs": [
+      "尋找教會",
+      "了解信仰",
+      "參與活動"
+    ],
+    "mobileUsagePercent": 75
+  }
+}

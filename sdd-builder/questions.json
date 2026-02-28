@@ -1,0 +1,1305 @@
+{
+  "stage1": {
+    "name": "基礎資訊",
+    "description": "建構網站骨架與品牌定位",
+    "outputFile": "church-basic.json",
+    "questions": [
+      {
+        "id": "Q1",
+        "question": "教會全稱與簡稱？",
+        "description": "例：台北信望愛基督教會 / 信望愛",
+        "fields": [
+          {
+            "name": "fullName",
+            "type": "text",
+            "required": true,
+            "maxLength": 30,
+            "placeholder": "台北信望愛基督教會"
+          },
+          {
+            "name": "shortName",
+            "type": "text",
+            "required": true,
+            "maxLength": 15,
+            "placeholder": "信望愛教會"
+          },
+          {
+            "name": "englishName",
+            "type": "text",
+            "required": false,
+            "placeholder": "Faith Hope Love Church Taipei"
+          }
+        ],
+        "validation": {
+          "fullName": "中文全稱不超過30字",
+          "shortName": "簡稱不超過15字"
+        },
+        "llmHints": [
+          "檢查是否包含教會類型（基督教會/長老教會等）",
+          "建議提供英文名稱以提升SEO"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "完整地址與 Google Maps 連結？",
+        "description": "請提供教會地址和 Google Maps 分享連結",
+        "fields": [
+          {
+            "name": "street",
+            "type": "text",
+            "required": true,
+            "placeholder": "台北市中正區羅斯福路一段1號"
+          },
+          {
+            "name": "city",
+            "type": "text",
+            "required": true,
+            "placeholder": "台北市"
+          },
+          {
+            "name": "district",
+            "type": "text",
+            "required": false,
+            "placeholder": "中正區"
+          },
+          {
+            "name": "zipCode",
+            "type": "text",
+            "required": false,
+            "placeholder": "100"
+          },
+          {
+            "name": "googleMapsUrl",
+            "type": "url",
+            "required": false,
+            "placeholder": "https://goo.gl/maps/xxxxx"
+          }
+        ],
+        "validation": {
+          "googleMapsUrl": "必須是有效的 Google Maps 連結"
+        },
+        "llmHints": [
+          "可以從地址自動生成座標",
+          "建議加入交通指引說明"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "聚會時間表？",
+        "description": "請列出常態性聚會（主日崇拜、禱告會等）",
+        "fields": [
+          {
+            "name": "schedule",
+            "type": "array",
+            "required": true,
+            "minItems": 1,
+            "itemStructure": {
+              "name": "聚會名稱",
+              "day": "週幾",
+              "time": "時間區間（HH:MM-HH:MM）",
+              "location": "地點",
+              "description": "說明（可選）",
+              "recurring": "weekly/biweekly/monthly"
+            },
+            "example": {
+              "name": "主日崇拜",
+              "day": "週日",
+              "time": "10:00-12:00",
+              "location": "主堂",
+              "description": "英語/華語同步翻譯",
+              "recurring": "weekly"
+            }
+          }
+        ],
+        "validation": {
+          "time": "必須是 HH:MM-HH:MM 格式",
+          "minItems": "至少需要主日崇拜時間"
+        },
+        "llmHints": [
+          "建議提供 2-5 個常態聚會",
+          "可加入特殊聚會（如月末愛宴）"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "使命陳述？",
+        "description": "教會的使命、異象與核心價值",
+        "fields": [
+          {
+            "name": "mission",
+            "type": "textarea",
+            "required": true,
+            "minLength": 10,
+            "maxLength": 100,
+            "placeholder": "活出基督的愛，建造榮神益人的教會"
+          },
+          {
+            "name": "vision",
+            "type": "textarea",
+            "required": false,
+            "minLength": 10,
+            "maxLength": 80,
+            "placeholder": "成為社區的祝福，傳揚福音直到地極"
+          },
+          {
+            "name": "values",
+            "type": "array",
+            "required": false,
+            "minItems": 3,
+            "maxItems": 5,
+            "itemType": "text",
+            "example": [
+              "敬拜：以心靈誠實敬拜神",
+              "團契：彼此相愛的群體",
+              "服事：發揮恩賜服事人群",
+              "傳福音：分享耶穌的好消息"
+            ]
+          }
+        ],
+        "validation": {
+          "mission": "使命 1-2 句（20-50 字）",
+          "vision": "異象 1 句（15-30 字）",
+          "values": "核心價值 3-5 項"
+        },
+        "llmHints": [
+          "使命應簡潔有力，易於記憶",
+          "異象應具體且可達成"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "領導團隊？",
+        "description": "牧者與同工資訊（姓名、職稱、簡介）",
+        "fields": [
+          {
+            "name": "team",
+            "type": "array",
+            "required": true,
+            "minItems": 3,
+            "itemStructure": {
+              "name": "姓名",
+              "title": "職稱",
+              "photo": "照片URL",
+              "bio": "簡介（50-150字）",
+              "email": "Email（可選）",
+              "order": "顯示順序"
+            },
+            "example": {
+              "name": "王恩典",
+              "title": "主任牧師",
+              "photo": "/images/pastor-wang.jpg",
+              "bio": "神學院道學碩士，牧養教會15年，熱愛青年事工",
+              "email": "pastor@church.org",
+              "order": 1
+            }
+          }
+        ],
+        "validation": {
+          "minItems": "至少 1 位主要牧者 + 2 位同工",
+          "photo": "建議 400x400px 正方形",
+          "bio": "簡介 50-150 字"
+        },
+        "llmHints": [
+          "照片建議使用專業形象照",
+          "可加入服事領域與聯絡方式"
+        ]
+      },
+      {
+        "id": "Q6",
+        "question": "聯絡資訊？",
+        "description": "電話、Email、社交媒體等聯絡方式",
+        "fields": [
+          {
+            "name": "phone",
+            "type": "tel",
+            "required": true,
+            "placeholder": "02-2345-6789"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "required": true,
+            "placeholder": "info@faithhopelove.org"
+          },
+          {
+            "name": "line",
+            "type": "text",
+            "required": false,
+            "placeholder": "@faithhopelove"
+          },
+          {
+            "name": "facebook",
+            "type": "url",
+            "required": false,
+            "placeholder": "https://facebook.com/faithhopelove"
+          },
+          {
+            "name": "instagram",
+            "type": "url",
+            "required": false,
+            "placeholder": "https://instagram.com/faithhopelove"
+          },
+          {
+            "name": "youtube",
+            "type": "url",
+            "required": false,
+            "placeholder": "https://youtube.com/@faithhopelove"
+          },
+          {
+            "name": "officeHours",
+            "type": "text",
+            "required": false,
+            "placeholder": "週二至週五 10:00-17:00"
+          }
+        ],
+        "validation": {
+          "email": "必須是有效的 Email 格式",
+          "facebook": "必須是有效的 Facebook URL",
+          "minContacts": "至少 2 種聯絡方式"
+        },
+        "llmHints": [
+          "建議提供多種聯絡管道",
+          "社交媒體可增加觸及率"
+        ]
+      },
+      {
+        "id": "Q7",
+        "question": "品牌風格？",
+        "description": "主要色系、Logo、字體與整體風格",
+        "fields": [
+          {
+            "name": "primaryColor",
+            "type": "color",
+            "required": true,
+            "default": "#3B82F6",
+            "placeholder": "#3B82F6"
+          },
+          {
+            "name": "secondaryColor",
+            "type": "color",
+            "required": false,
+            "default": "#10B981",
+            "placeholder": "#10B981"
+          },
+          {
+            "name": "accentColor",
+            "type": "color",
+            "required": false,
+            "default": "#F59E0B",
+            "placeholder": "#F59E0B"
+          },
+          {
+            "name": "logoUrl",
+            "type": "url",
+            "required": false,
+            "placeholder": "/images/logo.svg"
+          },
+          {
+            "name": "fontFamily",
+            "type": "select",
+            "required": true,
+            "default": "Noto Sans TC",
+            "options": [
+              "Noto Sans TC",
+              "Noto Serif TC",
+              "Microsoft JhengHei",
+              "PingFang TC",
+              "Source Han Sans"
+            ]
+          },
+          {
+            "name": "style",
+            "type": "select",
+            "required": true,
+            "default": "modern",
+            "options": [
+              {
+                "value": "modern",
+                "label": "現代風格",
+                "description": "簡約、大量留白、現代字體"
+              },
+              {
+                "value": "elegant",
+                "label": "優雅風格",
+                "description": "優雅、襯線字體、漸層"
+              },
+              {
+                "value": "traditional",
+                "label": "傳統風格",
+                "description": "經典、深色系、莊重"
+              }
+            ]
+          }
+        ],
+        "validation": {
+          "primaryColor": "必須是有效的 HEX 色碼",
+          "contrast": "檢查對比度（無障礙標準）"
+        },
+        "llmHints": [
+          "可從 Logo 自動提取主色",
+          "提供配色建議",
+          "確保文字與背景對比度足夠"
+        ]
+      },
+      {
+        "id": "Q8",
+        "question": "目標訪客？",
+        "description": "主要服事對象與語言需求",
+        "fields": [
+          {
+            "name": "primary",
+            "type": "multiselect",
+            "required": true,
+            "options": [
+              "families",
+              "youth",
+              "elderly",
+              "children",
+              "students",
+              "newcomers",
+              "immigrants"
+            ],
+            "labels": {
+              "families": "家庭",
+              "youth": "青年",
+              "elderly": "長者",
+              "children": "兒童",
+              "students": "學生",
+              "newcomers": "慕道友",
+              "immigrants": "新移民"
+            }
+          },
+          {
+            "name": "ageGroups",
+            "type": "multiselect",
+            "required": false,
+            "options": ["0-12", "13-18", "18-25", "25-40", "40-60", "60+"]
+          },
+          {
+            "name": "languages",
+            "type": "multiselect",
+            "required": true,
+            "default": ["zh-TW"],
+            "options": ["zh-TW", "zh-CN", "en", "id", "th", "vi"]
+          },
+          {
+            "name": "needs",
+            "type": "multiselect",
+            "required": false,
+            "options": [
+              "尋找教會",
+              "了解信仰",
+              "參與活動",
+              "尋求幫助",
+              "服事機會"
+            ]
+          },
+          {
+            "name": "mobileUsagePercent",
+            "type": "number",
+            "required": true,
+            "default": 70,
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          }
+        ],
+        "validation": {
+          "primary": "至少選擇 1 個主要對象",
+          "languages": "至少選擇 1 種語言"
+        },
+        "llmHints": [
+          "手機使用率 >70% → 行動優先設計",
+          "青年為主 → 加強社交媒體整合",
+          "多語需求 → 啟用多語言功能"
+        ]
+      }
+    ]
+  },
+  "stage2": {
+    "name": "核心功能",
+    "description": "啟用 80% 教會都需要的功能",
+    "outputFile": "core-features.json",
+    "questions": [
+      {
+        "id": "Q9",
+        "question": "確認核心功能",
+        "description": "請選擇要啟用的核心功能（可複選）",
+        "fields": [
+          {
+            "name": "selectedFeatures",
+            "type": "multiselect",
+            "required": true,
+            "minItems": 4,
+            "options": [
+              {
+                "value": "schedule",
+                "label": "聚會時間表",
+                "description": "動態顯示各類聚會",
+                "complexity": "low",
+                "necessity": 5
+              },
+              {
+                "value": "sermons",
+                "label": "講道信息",
+                "description": "音頻/影片播放器",
+                "complexity": "medium",
+                "necessity": 5
+              },
+              {
+                "value": "events",
+                "label": "活動日曆",
+                "description": "活動預覽+報名",
+                "complexity": "medium",
+                "necessity": 4
+              },
+              {
+                "value": "contact",
+                "label": "聯絡表單",
+                "description": "即時通知",
+                "complexity": "low",
+                "necessity": 5
+              },
+              {
+                "value": "donation",
+                "label": "奉獻功能",
+                "description": "QR碼+線上支付",
+                "complexity": "medium-high",
+                "necessity": 4
+              },
+              {
+                "value": "social",
+                "label": "社交媒體",
+                "description": "FB/IG/YouTube 嵌入",
+                "complexity": "low",
+                "necessity": 4
+              }
+            ]
+          }
+        ],
+        "validation": {
+          "minItems": "至少選擇 4 項",
+          "contactRequired": "建議啟用「聯絡表單」"
+        },
+        "llmHints": [
+          "評估總開發時間",
+          "檢查功能相依性"
+        ]
+      },
+      {
+        "id": "Q10",
+        "question": "講道主要格式？",
+        "description": "影片、音頻還是文字？",
+        "conditionalOn": {
+          "Q9.selectedFeatures": "includes:sermons"
+        },
+        "fields": [
+          {
+            "name": "primaryFormat",
+            "type": "select",
+            "required": true,
+            "default": "video",
+            "options": [
+              {
+                "value": "video",
+                "label": "影片",
+                "description": "YouTube 嵌入（推薦）"
+              },
+              {
+                "value": "audio",
+                "label": "音頻",
+                "description": "MP3 播放器"
+              },
+              {
+                "value": "text",
+                "label": "文字",
+                "description": "講章文字版"
+              }
+            ]
+          },
+          {
+            "name": "platforms",
+            "type": "multiselect",
+            "required": false,
+            "options": ["youtube", "vimeo", "自行上傳"]
+          },
+          {
+            "name": "enableDownload",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "允許下載"
+          },
+          {
+            "name": "showNotes",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "顯示講道筆記"
+          },
+          {
+            "name": "categories",
+            "type": "array",
+            "required": false,
+            "default": ["主日信息", "專題講座"],
+            "itemType": "text"
+          },
+          {
+            "name": "displayStyle",
+            "type": "select",
+            "required": false,
+            "default": "grid",
+            "options": ["grid", "list", "carousel"]
+          }
+        ]
+      },
+      {
+        "id": "Q11",
+        "question": "奉獻需求？",
+        "description": "僅 QR 碼或完整線上支付？",
+        "conditionalOn": {
+          "Q9.selectedFeatures": "includes:donation"
+        },
+        "fields": [
+          {
+            "name": "methods",
+            "type": "array",
+            "required": true,
+            "minItems": 1,
+            "itemOptions": [
+              {
+                "type": "qrcode",
+                "label": "QR Code 轉帳",
+                "fields": {
+                  "name": "顯示名稱",
+                  "image": "QR Code 圖片",
+                  "bankInfo": {
+                    "bank": "銀行名稱",
+                    "account": "帳號",
+                    "name": "戶名"
+                  }
+                }
+              },
+              {
+                "type": "online",
+                "label": "線上支付",
+                "fields": {
+                  "provider": ["stripe", "newebpay", "ecpay"],
+                  "currency": "TWD",
+                  "enableRecurring": "是否支援定期定額"
+                }
+              }
+            ]
+          },
+          {
+            "name": "taxReceipt",
+            "type": "boolean",
+            "required": false,
+            "default": false,
+            "label": "提供奉獻收據"
+          }
+        ],
+        "llmHints": [
+          "僅 QR 碼：簡單、免費",
+          "線上支付：需申請金流（手續費 2.9%）",
+          "Stripe 適合國際捐款",
+          "綠界/藍新適合台灣本地"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "活動日曆配置",
+        "description": "活動管理與報名設定",
+        "conditionalOn": {
+          "Q9.selectedFeatures": "includes:events"
+        },
+        "fields": [
+          {
+            "name": "provider",
+            "type": "select",
+            "required": true,
+            "default": "google",
+            "options": [
+              {
+                "value": "google",
+                "label": "Google Calendar",
+                "description": "免費、易整合"
+              },
+              {
+                "value": "airtable",
+                "label": "Airtable",
+                "description": "功能豐富"
+              },
+              {
+                "value": "notion",
+                "label": "Notion",
+                "description": "易於編輯"
+              }
+            ]
+          },
+          {
+            "name": "calendarId",
+            "type": "text",
+            "required": false,
+            "placeholder": "xxxxx@group.calendar.google.com"
+          },
+          {
+            "name": "enableRegistration",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "啟用線上報名"
+          },
+          {
+            "name": "registrationProvider",
+            "type": "select",
+            "required": false,
+            "conditionalOn": {
+              "enableRegistration": true
+            },
+            "options": ["Google Forms", "Airtable", "內建表單"]
+          }
+        ]
+      },
+      {
+        "id": "Q13",
+        "question": "聯絡表單配置",
+        "description": "表單欄位與通知設定",
+        "conditionalOn": {
+          "Q9.selectedFeatures": "includes:contact"
+        },
+        "fields": [
+          {
+            "name": "provider",
+            "type": "select",
+            "required": true,
+            "default": "emailjs",
+            "options": [
+              {
+                "value": "emailjs",
+                "label": "EmailJS",
+                "description": "免費、簡單"
+              },
+              {
+                "value": "formspree",
+                "label": "Formspree",
+                "description": "穩定、易用"
+              },
+              {
+                "value": "google-sheets",
+                "label": "Google Sheets",
+                "description": "自動記錄"
+              }
+            ]
+          },
+          {
+            "name": "fields",
+            "type": "multiselect",
+            "required": true,
+            "default": ["name", "email", "phone", "message"],
+            "options": [
+              "name",
+              "email",
+              "phone",
+              "subject",
+              "message",
+              "preferredContact",
+              "bestTime"
+            ]
+          },
+          {
+            "name": "notifyEmail",
+            "type": "email",
+            "required": true,
+            "placeholder": "info@church.org"
+          },
+          {
+            "name": "autoReply",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "自動回覆"
+          }
+        ]
+      },
+      {
+        "id": "Q14",
+        "question": "社交媒體整合",
+        "description": "嵌入社交媒體內容",
+        "conditionalOn": {
+          "Q9.selectedFeatures": "includes:social"
+        },
+        "fields": [
+          {
+            "name": "enableFeed",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "顯示最新貼文"
+          },
+          {
+            "name": "platforms",
+            "type": "multiselect",
+            "required": true,
+            "options": ["facebook", "instagram", "youtube", "twitter"]
+          },
+          {
+            "name": "displayStyle",
+            "type": "select",
+            "required": false,
+            "default": "grid",
+            "options": ["grid", "carousel", "list"]
+          }
+        ]
+      }
+    ]
+  },
+  "stage3": {
+    "name": "進階功能",
+    "description": "依需求加入特色功能",
+    "outputFile": "advanced-features.json",
+    "questions": [
+      {
+        "id": "Q15",
+        "question": "選擇進階功能",
+        "description": "從下列功能中選擇需要的（可複選）",
+        "fields": [
+          {
+            "name": "selectedFeatures",
+            "type": "multiselect",
+            "required": false,
+            "options": [
+              {
+                "value": "prayer",
+                "label": "代禱事項",
+                "category": "互動",
+                "complexity": "medium",
+                "cost": "low"
+              },
+              {
+                "value": "testimonies",
+                "label": "信仰見證",
+                "category": "互動",
+                "complexity": "medium",
+                "cost": "low"
+              },
+              {
+                "value": "memberPortal",
+                "label": "會員系統",
+                "category": "互動",
+                "complexity": "high",
+                "cost": "medium"
+              },
+              {
+                "value": "registration",
+                "label": "線上報名",
+                "category": "互動",
+                "complexity": "medium",
+                "cost": "low"
+              },
+              {
+                "value": "bulletin",
+                "label": "週報系統",
+                "category": "內容",
+                "complexity": "low",
+                "cost": "low"
+              },
+              {
+                "value": "devotional",
+                "label": "靈修資源",
+                "category": "內容",
+                "complexity": "low",
+                "cost": "low"
+              },
+              {
+                "value": "ministries",
+                "label": "事工專欄",
+                "category": "內容",
+                "complexity": "low",
+                "cost": "low"
+              },
+              {
+                "value": "livestream",
+                "label": "直播串流",
+                "category": "技術",
+                "complexity": "high",
+                "cost": "medium-high"
+              },
+              {
+                "value": "i18n",
+                "label": "多語言支持",
+                "category": "技術",
+                "complexity": "medium-high",
+                "cost": "medium"
+              },
+              {
+                "value": "mediaLibrary",
+                "label": "影音頻道",
+                "category": "技術",
+                "complexity": "medium",
+                "cost": "low"
+              },
+              {
+                "value": "pwa",
+                "label": "手機推送",
+                "category": "技術",
+                "complexity": "high",
+                "cost": "medium"
+              }
+            ]
+          }
+        ],
+        "llmHints": [
+          "依教會規模建議功能",
+          "評估開發成本與維護難度",
+          "提供功能優先級建議"
+        ]
+      },
+      {
+        "id": "Q16",
+        "question": "代禱事項配置",
+        "conditionalOn": {
+          "Q15.selectedFeatures": "includes:prayer"
+        },
+        "fields": [
+          {
+            "name": "backend",
+            "type": "select",
+            "required": true,
+            "default": "airtable",
+            "options": ["airtable", "notion", "supabase"]
+          },
+          {
+            "name": "features",
+            "type": "object",
+            "fields": {
+              "submit": {
+                "type": "boolean",
+                "default": true,
+                "label": "提交代禱"
+              },
+              "view": {
+                "type": "boolean",
+                "default": true,
+                "label": "查看代禱"
+              },
+              "moderation": {
+                "type": "boolean",
+                "default": true,
+                "label": "需審核"
+              }
+            }
+          },
+          {
+            "name": "categories",
+            "type": "array",
+            "default": ["個人", "家庭", "教會", "社會"],
+            "itemType": "text"
+          },
+          {
+            "name": "displayLimit",
+            "type": "number",
+            "default": 10,
+            "min": 5,
+            "max": 50
+          }
+        ]
+      },
+      {
+        "id": "Q17",
+        "question": "其他進階功能配置",
+        "description": "針對選定的進階功能進行詳細配置",
+        "fields": [
+          {
+            "name": "configurations",
+            "type": "dynamic",
+            "note": "依 Q15 選定的功能動態生成配置欄位"
+          }
+        ]
+      },
+      {
+        "id": "Q18",
+        "question": "特殊需求？",
+        "description": "是否有其他特殊需求或限制？",
+        "fields": [
+          {
+            "name": "customRequirements",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "例：會友專區需要密碼保護、代禱事項需審核後顯示"
+          },
+          {
+            "name": "protectedAreas",
+            "type": "array",
+            "required": false,
+            "itemType": "text",
+            "placeholder": "需要保護的區域（如：會友專區、同工資訊）"
+          },
+          {
+            "name": "integrations",
+            "type": "array",
+            "required": false,
+            "itemType": "text",
+            "placeholder": "需要整合的外部服務（如：Zoom、Line Notify）"
+          }
+        ]
+      }
+    ]
+  },
+  "stage4": {
+    "name": "UI/UX與部署",
+    "description": "最佳化使用者體驗與上線準備",
+    "outputFile": "complete-sdd.json",
+    "questions": [
+      {
+        "id": "Q19",
+        "question": "手機使用比例？",
+        "description": "預估多少訪客會使用手機瀏覽？",
+        "fields": [
+          {
+            "name": "usagePercent",
+            "type": "number",
+            "required": true,
+            "default": 70,
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          {
+            "name": "priority",
+            "type": "select",
+            "required": true,
+            "auto": true,
+            "options": [
+              {
+                "value": "high",
+                "label": "高（>70%）",
+                "description": "行動優先設計"
+              },
+              {
+                "value": "medium",
+                "label": "中（50-70%）",
+                "description": "響應式平衡"
+              },
+              {
+                "value": "low",
+                "label": "低（<50%）",
+                "description": "桌面優先"
+              }
+            ]
+          },
+          {
+            "name": "adjustments",
+            "type": "object",
+            "auto": true,
+            "fields": {
+              "largerButtons": "boolean",
+              "simplifiedNav": "boolean",
+              "reducedAnimations": "boolean"
+            }
+          }
+        ]
+      },
+      {
+        "id": "Q20",
+        "question": "首頁重點展示？",
+        "description": "首頁最重要展示哪些內容？",
+        "fields": [
+          {
+            "name": "hero",
+            "type": "object",
+            "fields": {
+              "content": {
+                "type": "select",
+                "options": [
+                  "welcome-message",
+                  "latest-sermon",
+                  "upcoming-event",
+                  "livestream"
+                ]
+              },
+              "cta": {
+                "type": "array",
+                "maxItems": 2,
+                "default": ["參加聚會", "認識我們"]
+              }
+            }
+          },
+          {
+            "name": "sections",
+            "type": "array",
+            "required": true,
+            "itemStructure": {
+              "type": "section-type",
+              "order": "number"
+            },
+            "availableSections": [
+              "upcoming-events",
+              "latest-sermon",
+              "donation",
+              "testimonies",
+              "prayer-requests",
+              "social-feed"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Q21",
+        "question": "導航列配置？",
+        "description": "自訂網站導航選單",
+        "fields": [
+          {
+            "name": "style",
+            "type": "select",
+            "required": true,
+            "default": "sticky",
+            "options": ["sticky", "fixed", "static"]
+          },
+          {
+            "name": "items",
+            "type": "array",
+            "required": true,
+            "default": [
+              {
+                "label": "首頁",
+                "path": "/"
+              },
+              {
+                "label": "關於我們",
+                "path": "/about",
+                "dropdown": [
+                  {
+                    "label": "教會簡介",
+                    "path": "/about#intro"
+                  },
+                  {
+                    "label": "信仰告白",
+                    "path": "/about#faith"
+                  },
+                  {
+                    "label": "同工團隊",
+                    "path": "/about#team"
+                  }
+                ]
+              },
+              {
+                "label": "聚會資訊",
+                "path": "/schedule"
+              },
+              {
+                "label": "講道信息",
+                "path": "/sermons"
+              },
+              {
+                "label": "活動報名",
+                "path": "/events"
+              },
+              {
+                "label": "奉獻支持",
+                "path": "/donate"
+              },
+              {
+                "label": "聯絡我們",
+                "path": "/contact"
+              }
+            ]
+          },
+          {
+            "name": "mobileCollapse",
+            "type": "boolean",
+            "required": false,
+            "default": true
+          }
+        ]
+      },
+      {
+        "id": "Q22",
+        "question": "部署平台？",
+        "description": "選擇網站託管平台",
+        "fields": [
+          {
+            "name": "platform",
+            "type": "select",
+            "required": true,
+            "default": "netlify",
+            "options": [
+              {
+                "value": "netlify",
+                "label": "Netlify",
+                "description": "推薦新手，免費額度 100GB/月",
+                "difficulty": "easy",
+                "cost": "free"
+              },
+              {
+                "value": "vercel",
+                "label": "Vercel",
+                "description": "推薦開發者，免費額度 100GB/月",
+                "difficulty": "easy",
+                "cost": "free"
+              },
+              {
+                "value": "github-pages",
+                "label": "GitHub Pages",
+                "description": "適合靜態網站，免費 1GB",
+                "difficulty": "medium",
+                "cost": "free"
+              },
+              {
+                "value": "webflow",
+                "label": "Webflow",
+                "description": "非技術人員友善，$14/月起",
+                "difficulty": "easy",
+                "cost": "paid"
+              }
+            ]
+          },
+          {
+            "name": "domain",
+            "type": "text",
+            "required": false,
+            "placeholder": "faithhopelove.netlify.app"
+          },
+          {
+            "name": "customDomain",
+            "type": "text",
+            "required": false,
+            "placeholder": "www.faithhopelove.org"
+          },
+          {
+            "name": "ssl",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "啟用 HTTPS"
+          },
+          {
+            "name": "autoPublish",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "自動部署"
+          }
+        ]
+      },
+      {
+        "id": "Q23",
+        "question": "維護人員技術水平？",
+        "description": "主要維護者的技術背景",
+        "fields": [
+          {
+            "name": "technicalLevel",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "value": "none",
+                "label": "無（只會用 Word/社交媒體）",
+                "recommendations": ["使用 Notion CMS", "提供圖文操作手冊"]
+              },
+              {
+                "value": "basic",
+                "label": "基礎（會用 Google Docs/Sheets）",
+                "recommendations": ["使用 Airtable", "提供影片教學"]
+              },
+              {
+                "value": "advanced",
+                "label": "進階（懂 HTML/CSS）",
+                "recommendations": ["直接編輯 JSON", "提供開發文件"]
+              }
+            ]
+          },
+          {
+            "name": "primaryEditor",
+            "type": "select",
+            "required": true,
+            "auto": true,
+            "options": ["notion", "airtable", "json", "cms"]
+          },
+          {
+            "name": "backupEditor",
+            "type": "select",
+            "required": false,
+            "options": ["notion", "airtable", "google-sheets"]
+          },
+          {
+            "name": "llmAssistance",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "啟用 LLM 維護輔助"
+          },
+          {
+            "name": "trainingNeeded",
+            "type": "multiselect",
+            "required": false,
+            "options": [
+              "新增活動",
+              "上傳講道",
+              "修改聯絡資訊",
+              "更新團隊成員",
+              "發布週報",
+              "管理代禱事項"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Q24",
+        "question": "LLM 維護指令範例需求？",
+        "description": "需要哪些常用的 LLM 指令？",
+        "fields": [
+          {
+            "name": "enabled",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "label": "啟用 LLM 維護指令"
+          },
+          {
+            "name": "commonTasks",
+            "type": "multiselect",
+            "required": false,
+            "default": [
+              "新增活動",
+              "更新講道",
+              "修改聚會時間",
+              "新增同工"
+            ],
+            "options": [
+              "新增活動",
+              "更新講道",
+              "修改聚會時間",
+              "新增同工",
+              "更改配色",
+              "新增週報",
+              "管理代禱",
+              "更新見證",
+              "修改聯絡資訊",
+              "更新首頁內容"
+            ]
+          },
+          {
+            "name": "customInstructions",
+            "type": "array",
+            "required": false,
+            "itemType": "text",
+            "placeholder": "例：所有新增內容需審核"
+          }
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-01",
+    "totalQuestions": 24,
+    "estimatedTime": {
+      "stage1": "30-45 分鐘",
+      "stage2": "30-45 分鐘",
+      "stage3": "45-60 分鐘",
+      "stage4": "30-45 分鐘",
+      "total": "2.5-4 小時"
+    }
+  }
+}

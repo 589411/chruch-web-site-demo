@@ -1,0 +1,275 @@
+{
+  "categories": {
+    "events": {
+      "name": "活動管理",
+      "icon": "calendar",
+      "commands": [
+        {
+          "name": "新增活動",
+          "template": "新增活動：{活動名稱}\n時間：{日期} {開始時間}-{結束時間}\n地點：{地點}\n說明：{活動說明}\n報名連結：{URL}",
+          "example": "新增活動：聖誕節慶典\n時間：2024-12-25 15:00-18:00\n地點：主堂\n說明：歡迎弟兄姊妹攜家帶眷參加\n報名連結：https://forms.gle/xxxxx",
+          "variables": {
+            "活動名稱": "required|string",
+            "日期": "required|date|YYYY-MM-DD",
+            "開始時間": "required|time|HH:MM",
+            "結束時間": "required|time|HH:MM",
+            "地點": "optional|string",
+            "活動說明": "optional|string",
+            "URL": "optional|url"
+          }
+        },
+        {
+          "name": "修改活動時間",
+          "template": "修改活動「{活動名稱}」的時間為 {新日期} {新時間}",
+          "example": "修改活動「聖誕節慶典」的時間為 2024-12-25 14:00-17:00"
+        },
+        {
+          "name": "取消活動",
+          "template": "取消活動「{活動名稱}」\n原因：{取消原因}",
+          "example": "取消活動「聖誕節慶典」\n原因：場地維修"
+        }
+      ]
+    },
+    "sermons": {
+      "name": "講道管理",
+      "icon": "mic",
+      "commands": [
+        {
+          "name": "新增講道",
+          "template": "新增講道：\n標題：{講道標題}\n講員：{講員姓名}\n日期：{日期}\nYouTube連結：{URL}\n分類：{分類}\n經文：{經文}\n簡介：{簡介}",
+          "example": "新增講道：\n標題：愛的真諦\n講員：王恩典牧師\n日期：2024-01-07\nYouTube連結：https://youtu.be/xxxxx\n分類：主日信息\n經文：哥林多前書13章\n簡介：探討什麼是真正的愛"
+        },
+        {
+          "name": "批次匯入YouTube",
+          "template": "從 YouTube 播放清單匯入講道：\n播放清單 ID：{播放清單ID}\n講員：{講員姓名}\n分類：{分類}",
+          "example": "從 YouTube 播放清單匯入講道：\n播放清單 ID：PLxxxxxxxxx\n講員：王恩典牧師\n分類：主日信息"
+        },
+        {
+          "name": "更新講道資訊",
+          "template": "更新講道「{講道標題}」的{欄位}為：{新內容}",
+          "example": "更新講道「愛的真諦」的簡介為：深入探討哥林多前書13章"
+        }
+      ]
+    },
+    "schedule": {
+      "name": "聚會時間",
+      "icon": "clock",
+      "commands": [
+        {
+          "name": "新增聚會",
+          "template": "新增聚會：\n名稱：{聚會名稱}\n時間：{週期} {時間}\n地點：{地點}\n說明：{說明}",
+          "example": "新增聚會：\n名稱：週六禱告會\n時間：每週六 06:00-07:00\n地點：線上 Zoom\n說明：晨曦禱告會"
+        },
+        {
+          "name": "修改聚會時間",
+          "template": "把{聚會名稱}時間改為 {新時間}",
+          "example": "把主日崇拜時間改為 09:30-11:30"
+        },
+        {
+          "name": "暫停聚會",
+          "template": "暫停「{聚會名稱}」從 {開始日期} 到 {結束日期}\n原因：{原因}",
+          "example": "暫停「週三禱告會」從 2024-01-15 到 2024-01-22\n原因：場地維修"
+        }
+      ]
+    },
+    "team": {
+      "name": "團隊成員",
+      "icon": "users",
+      "commands": [
+        {
+          "name": "新增同工",
+          "template": "新增同工：\n姓名：{姓名}\n職稱：{職稱}\n照片：{圖片URL}\n簡介：{簡介}\nEmail：{email}",
+          "example": "新增同工：\n姓名：林恩慈\n職稱：兒童事工同工\n照片：/images/team/minister-lin.jpg\n簡介：幼教系畢業，熱愛孩童\nEmail：grace.lin@church.org"
+        },
+        {
+          "name": "更新同工資訊",
+          "template": "更新{姓名}的{欄位}：{新內容}",
+          "example": "更新王恩典牧師的簡介：神學院道學碩士，牧養教會18年"
+        },
+        {
+          "name": "調整顯示順序",
+          "template": "調整同工顯示順序：\n1. {姓名}\n2. {姓名}\n...",
+          "example": "調整同工顯示順序：\n1. 王恩典（主任牧師）\n2. 李平安（傳道）"
+        }
+      ]
+    },
+    "content": {
+      "name": "內容管理",
+      "icon": "file-text",
+      "commands": [
+        {
+          "name": "更新首頁歡迎訊息",
+          "template": "更新首頁歡迎訊息：\n標題：{標題}\n副標題：{副標題}\n按鈕：{按鈕文字1}、{按鈕文字2}",
+          "example": "更新首頁歡迎訊息：\n標題：歡迎來到信望愛大家庭\n副標題：在這裡，經歷神的愛\n按鈕：參加聚會、認識我們"
+        },
+        {
+          "name": "新增公告",
+          "template": "在首頁新增重要公告：\n{公告內容}\n顯示到：{結束日期}",
+          "example": "在首頁新增重要公告：\n春節期間主日崇拜時間調整\n顯示到：2024-02-05"
+        },
+        {
+          "name": "上傳週報",
+          "template": "上傳週報：\n日期：{日期}\n檔案：{檔案路徑}\n標題：{標題}",
+          "example": "上傳週報：\n日期：2024-01-07\n檔案：/uploads/bulletin.pdf\n標題：新年第一主日週報"
+        }
+      ]
+    },
+    "styling": {
+      "name": "樣式設定",
+      "icon": "palette",
+      "commands": [
+        {
+          "name": "更改主色調",
+          "template": "把網站主色調改成{顏色名稱} {HEX色碼}",
+          "example": "把網站主色調改成深藍色 #1e40af"
+        },
+        {
+          "name": "更改字體",
+          "template": "把{元素}字體改為 {字體名稱}",
+          "example": "把標題字體改為 Noto Serif TC"
+        },
+        {
+          "name": "切換模板",
+          "template": "切換到{風格}模板\n保留現有{保留項目}",
+          "example": "切換到優雅風格模板\n保留現有內容和配色"
+        }
+      ]
+    },
+    "contact": {
+      "name": "聯絡資訊",
+      "icon": "phone",
+      "commands": [
+        {
+          "name": "更新電話",
+          "template": "更新教會電話為：{電話號碼}",
+          "example": "更新教會電話為：02-2345-9999"
+        },
+        {
+          "name": "新增社交媒體",
+          "template": "新增 {平台名稱} 帳號：{帳號}\n顯示在{位置}",
+          "example": "新增 TikTok 帳號：@faithhopelove\n顯示在頁尾"
+        },
+        {
+          "name": "更新辦公時間",
+          "template": "更新辦公時間為：\n{時間說明}",
+          "example": "更新辦公時間為：\n週一至週五 09:00-17:00\n週六 09:00-12:00"
+        }
+      ]
+    },
+    "prayer": {
+      "name": "代禱事項",
+      "icon": "heart",
+      "commands": [
+        {
+          "name": "新增代禱",
+          "template": "新增代禱事項：\n分類：{分類}\n標題：{標題}\n內容：{內容}\n提交者：{姓名}",
+          "example": "新增代禱事項：\n分類：個人\n標題：為工作求智慧\n內容：求神賜智慧面對挑戰\n提交者：匿名"
+        },
+        {
+          "name": "審核代禱",
+          "template": "審核並發布代禱事項 #{編號}",
+          "example": "審核並發布代禱事項 #123"
+        },
+        {
+          "name": "標記已應允",
+          "template": "標記代禱事項 #{編號} 為「已應允」\n感恩見證：{見證內容}",
+          "example": "標記代禱事項 #123 為「已應允」\n感恩見證：感謝神，順利通過面試"
+        }
+      ]
+    },
+    "i18n": {
+      "name": "多語言",
+      "icon": "globe",
+      "commands": [
+        {
+          "name": "新增翻譯",
+          "template": "為「{頁面名稱}」頁面新增{語言}翻譯：\n{翻譯內容}",
+          "example": "為「關於我們」頁面新增英文翻譯：\nAbout Us\n\nFaith Hope Love Church..."
+        },
+        {
+          "name": "自動翻譯",
+          "template": "自動翻譯所有頁面到{語言}\n保留專有名詞",
+          "example": "自動翻譯所有頁面到英文\n保留專有名詞"
+        }
+      ]
+    },
+    "advanced": {
+      "name": "進階操作",
+      "icon": "settings",
+      "commands": [
+        {
+          "name": "批次匯入",
+          "template": "從 CSV 檔案匯入{資料類型}：\n檔案位置：{路徑}\n欄位對應：{對應說明}",
+          "example": "從 CSV 檔案匯入活動：\n檔案位置：/uploads/events.csv"
+        },
+        {
+          "name": "匯出備份",
+          "template": "匯出所有{資料類型}資料為 JSON\n時間範圍：{起始日期} 到 {結束日期}",
+          "example": "匯出所有講道資料為 JSON\n時間範圍：2023-01-01 到 2023-12-31"
+        },
+        {
+          "name": "更新SEO",
+          "template": "更新{頁面}SEO 設定：\n標題：{標題}\n描述：{描述}\n關鍵字：{關鍵字}",
+          "example": "更新首頁 SEO 設定：\n標題：台北信望愛基督教會\n描述：位於台北市的教會"
+        },
+        {
+          "name": "撤銷操作",
+          "template": "撤銷上一個操作",
+          "example": "撤銷上一個操作"
+        },
+        {
+          "name": "查看歷史",
+          "template": "顯示最近{數量}次操作記錄",
+          "example": "顯示最近10次操作記錄"
+        }
+      ]
+    }
+  },
+  "quickActions": [
+    {
+      "name": "新增本週主日講道",
+      "command": "新增講道：\n標題：{自動填入本週日期}\n講員：王恩典牧師\n日期：{自動填入}\n分類：主日信息"
+    },
+    {
+      "name": "發布本週週報",
+      "command": "上傳週報：\n日期：{自動填入}\n檔案：/uploads/bulletin-latest.pdf"
+    },
+    {
+      "name": "新增本週活動",
+      "command": "新增活動：\n時間：{引導選擇本週日期}"
+    }
+  ],
+  "shortcuts": {
+    "新增活動": "events.add",
+    "新增講道": "sermons.add",
+    "更新首頁": "content.updateHome",
+    "改色調": "styling.changeColor",
+    "上傳週報": "content.uploadBulletin"
+  },
+  "safetyRules": {
+    "requireConfirmation": [
+      "delete",
+      "批次刪除",
+      "覆蓋資料",
+      "更改樣式",
+      "切換模板"
+    ],
+    "requireApproval": [
+      "發布代禱",
+      "發布見證",
+      "修改團隊資訊",
+      "更改聯絡方式"
+    ],
+    "autoBackup": [
+      "批次匯入",
+      "批次更新",
+      "刪除資料"
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-01",
+    "totalCommands": 35,
+    "supportedLanguages": ["zh-TW", "en"]
+  }
+}
