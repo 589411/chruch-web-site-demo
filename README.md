@@ -145,11 +145,61 @@ node sdd-builder/church-builder.js
 4. **無障礙**：符合 WCAG 2.1 AA 標準
 5. **SEO 友善**：結構化資料與語意標籤
 
+## 🚀 部署流程記錄
+
+### 成功案例：示範網站
+
+本專案已成功生成並部署示範網站：
+
+#### 1️⃣ 建置網站
+```bash
+cd output/website
+npm install
+npm run build
+```
+
+#### 2️⃣ 部署到 Netlify（兩種方式）
+
+**方式 A：Netlify CLI**
+```bash
+cd output/website
+npx netlify-cli deploy --prod --dir=out
+# 選擇 "Create & configure a new project"
+# 選擇你的 Team
+# 輸入網站名稱或使用預設值
+```
+
+**方式 B：Netlify Drop（最簡單）**
+1. 開啟 https://app.netlify.com/drop
+2. 拖放 `output/website/out` 資料夾
+3. 等待 30 秒，完成！
+
+#### 3️⃣ 推送到 GitHub
+```bash
+# 初始化 Git（已完成）
+git init
+git add .
+git commit -m "Initial commit: Church Website SDD System with demo site"
+git branch -M main
+
+# 連接 GitHub（請先在 GitHub 建立 repository）
+git remote add origin https://github.com/你的帳號/church-website-sdd.git
+git push -u origin main
+```
+
+### 部署結果
+- ✅ **網站已上線**：可透過 Netlify 網址訪問
+- ✅ **自動 SSL**：HTTPS 已啟用
+- ✅ **全球 CDN**：快速載入
+- ✅ **響應式設計**：手機/桌面完美適配
+
+---
+
 ## 📚 延伸閱讀
 
 - [完整 SDD 指引](./SDD-GUIDE.md)
-- [JSON Schema 說明](./schemas/README.md)
-- [模板自訂指南](./templates/README.md)
+- [快速啟動指南](./START-DEMO.md)
+- [部署完整教學](./DEPLOY-GUIDE.md)
 - [LLM 維護手冊](./llm-commands/COMMANDS.md)
 
 ## 🤝 貢獻
