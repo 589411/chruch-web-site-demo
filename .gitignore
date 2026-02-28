@@ -43,3 +43,9 @@ temp/
 # Backup files
 *.bak
 backup/
+
+# Internal documentation (不上傳到 GitHub)
+FACEBOOK-POST.md
+FACEBOOK-POST-READY.txt
+**/marketing/
+**/internal/
